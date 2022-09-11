@@ -13,29 +13,54 @@
 </head>
 <body>
 
-	<div class="container-fluid">
-		<nav class="navbar">
+	<div class="container-fluid m-0 p-0">
+		<nav class="navbar bg-dark text-light justify-content-center">
 			<h1 class="navbar-brand">Alarm Clock</h1>
 		</nav>
 
-		<div>
+		<div class="container-fluid d-flex justify-content-center">
 			<!-- Alarm Clock -->
-			<div>
+
+			<div id="alarm-clock-container" class="border w-25 m-5 shadow-lg">
+				<nav class="navbar w-25 m-auto">
+					<img class="w-100" src="assets/images/alarm-clock.png">
+				</nav>
+				
 				<!-- Date and time -->
-				<div>
-					<h3 id="time"></h3>
+				<div class="d-flex flex-column align-items-center p-3 ">
+					<h3 id="time" class=""></h3>
 					<p id="date"></p>
 				</div>
 
 				<!-- Set Alarm -->
 				<div>
-					<div>
-						<h3 id="hours"></h3>
-						<h3 id="minutes"></h3>
-						<h3 id="ampm"></h3>
+					<div class="d-flex justify-content-center">
+						<input 
+						class="ps-2 m-3" 
+						type="number" 
+						name="hours" 
+						id="hours" 
+						min="0" max="12" 
+						required
+						placeholder="hours">
+						<input 
+						class="ps-2 m-3" 
+						type="number" 
+						name="mints" 
+						id="mints" 
+						min="0" max="60" 
+						required
+						placeholder="mints">
+
+						<div class="m-3">
+							<select class="meridiem p-2">
+								<option selected value="AM">AM</option>
+								<option value="PM">PM</option>
+							</select>
+						</div>
 					</div>
-					<div>
-						<button type="submit">SET ALARM</button>
+					<div class="d-flex justify-content-center">
+						<button class="w-100 border-0 shadow-sm p-2 bg-primary" type="submit">SET ALARM</button>
 					</div>
 					
 				</div>
@@ -43,8 +68,26 @@
 			</div>	
 
 			<!-- List of All Alarm  -->
-			<div>
-				
+			<div id="alarmlist" class="border m-5 w-25 shadow-lg">
+				<nav class="navbar bg-primary">
+					<p class="m-0 m-auto">All Alarms</p>
+				</nav>
+				<div class="alarm border my-3 p-2 d-flex justify-content-between">
+					<div class="left">
+						<div class="w-25">
+							<img class="w-50" src="assets/images/alarmIcon.png">
+						</div>
+						
+						<div>
+							
+						</div>
+					</div>
+
+					<div class="right w-25">
+						<img class="w-50" src="assets/images/trash.png">
+					<div>
+						
+				</div>
 			</div>
 		</div>
 		
