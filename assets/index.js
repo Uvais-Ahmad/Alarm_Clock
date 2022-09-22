@@ -3,6 +3,8 @@ let setDate = document.getElementById('date');
 let hoursDom =	document.getElementById('hours');
 let mintsDom = document.getElementById('mints');
 let  meridiemDom = document.getElementsByClassName('meridiem')[0];
+let setAlarm = document.getElementById('submit');
+let alarmList = document.getElementsByClassName('alarm')[0];
 
 setInterval(()=>{
 	let time = new Date();
@@ -12,30 +14,74 @@ setInterval(()=>{
 	setTime.textContent = time.toLocaleTimeString();
 },1000);
 
-handleSetTime();
-function handleSetTime(){
+setDefaultAlarm();
+
+setAlarm.addEventListener('click', handleSubmit );
+
+function handleSubmit(){
+	console.log('handleSubmit called')
+	let h , m , meri;
+	h = hoursDom.value;
+	m = mintsDom.value;
+	meri = meridiemDom.value;
+
+
+	let timeString = getTimeString(h,m,meri);
+	handleSetAlarm(timeString);
+	setDefaultAlarm();
+
+}
+
+function handleSetAlarm(time){
+	console.log('handleSetAlarm called')
+	alarmList.innerHTML += 
+					`<div class = " d-flex shadow mt-1">
+						<div class="left">
+							<div class="w-25 ">
+								<img class="w-50 mt-1" src="assets/images/bell.png">
+							</div>
+							
+							<div>
+								<h6 class="m-0 text-secondary alarmTime">${time}</h6>
+								<p class="m-0 text-secondary">alarm in soon</p>
+							</div>
+						</div>
+
+						<div class="right w-50">
+							<img class="w-50 mt-1 ml-auto" src="assets/images/trashBin.png">
+						<div>
+					</div>`
+}
+
+
+				// For setting the alarm Bydefault
+function setDefaultAlarm(){
+	console.log('setDefaultAlarm called');
 	let time = new Date();
-	// time.getHours() +':'+time.getMinutes()+':'+time.getSeconds();
-	// let secs = time.getSeconds();
 	let hours = time.getHours();
 	let mints = time.getMinutes();
+
 	let meridiem = hours >= 12 ? 'PM' : 'AM' ;
 	hours = hours > 12 ? hours - 12 : hours; 
 
 	hours = appendZero(hours);
 	mints = appendZero(mints);
-	// secs = appendZero(secs);
 	hoursDom.value = hours;
 	mintsDom.value = mints;
 	meridiemDom.value = meridiem;
 	
-	// let currentTime = hours+' : '+mints+' : '+secs+' : '+meridiem;
-	// return currentTime;
 }
 
 function appendZero(n){
+		console.log("appendZero called")
+
 	if(n<10){
 		return '0'+n;
 	}
 	return n;
+}
+
+function getTimeString ( h , m , meri){
+	console.log("getTimeString called")
+	return `${h} : ${m} ${meri}`;
 }

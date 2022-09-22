@@ -3,3 +3,10 @@
 	font-family: sans-serif;
 	/* border: 1px solid lightgrey; */
 }
+.left{
+	display: flex;
+
+}
+.alarm :first-child{
+	
+}
