@@ -35,23 +35,30 @@
 				<!-- Set Alarm -->
 				<div>
 					<div class="d-flex justify-content-center">
-						<input 
-						class="ps-2 m-3" 
-						type="number" 
-						name="hours" 
-						id="hours" 
-						min="0" max="12" 
-						required
-						placeholder="hours">
-						<input 
-						class="ps-2 m-3" 
-						type="number" 
-						name="mints" 
-						id="mints" 
-						min="0" max="59" 
-						required
-						placeholder="mints">
+						<!-- Hours -->
+						<select 
+						class="ps-2 m-3"
+						id="hours">
+						<option 
+						class="text-secondary"  
+						disabled
+						>Hours</option>
+						<!-- More option added by JS -->
+						</select>
 
+						<!-- minutes -->
+						<select 
+						class="ps-2 m-3"
+						id="mints">
+						<option 
+						class="text-secondary" 
+						disabled
+						>Mints</option>
+						<option value="00">00</option>
+						<!-- More option added by JS -->
+						</select>
+
+						<!-- meridium -->
 						<div class="m-3">
 							<select class="meridiem p-2">
 								<option  value="AM">AM</option>
@@ -59,6 +66,7 @@
 							</select>
 						</div>
 					</div>
+
 					<div class="d-flex justify-content-center">
 						<button id="submit" class="w-100 border-0 shadow-sm p-2 bg-primary" type="submit">SET ALARM</button>
 					</div>

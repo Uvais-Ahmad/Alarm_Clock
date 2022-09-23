@@ -14,6 +14,7 @@ setInterval(()=>{
 	setTime.textContent = time.toLocaleTimeString();
 },1000);
 
+appendOption();
 setDefaultAlarm();
 
 setAlarm.addEventListener('click', handleSubmit );
@@ -29,25 +30,20 @@ function handleSubmit(){
 	let timeString = getTimeString(h,m,meri);
 	handleSetAlarm(timeString);
 	setDefaultAlarm();
+	handleDeleteAlarm();
+}
 
-	//Add EventListner on each alarm 
+function handleDeleteAlarm(){
+	//Add EventListner on each alarm And Setup delete alarm
 	let allTrash = document.querySelectorAll('.trashBin');
-	console.log(allTrash);
-	allTrash.forEach(bin => {
-		bin.addEventListener('click' , (e) => {
-			console.log('Yes I am clicked  ')
+	
+	allTrash.forEach(trash => {
+		trash.addEventListener('click' , (e) => {
+			console.log('Delete Alarm');
 			e.target.parentElement.parentElement.remove();
+			//parent of image is div and parent on div is Whole Alarm
 		})
 	})
-
-	// let allAlarm = document.querySelectorAll('.oneAlarm');
-	// console.log(allAlarm);
-	// allAlarm.forEach(alarm => {
-	// 	alarm.addEventListener('click' , (e) => {
-	// 		console.log(e.target)
-	// 	})
-	// })
-
 }
 
 function handleSetAlarm(time){
@@ -84,10 +80,33 @@ function setDefaultAlarm(){
 
 	hours = appendZero(hours);
 	mints = appendZero(mints);
+
 	hoursDom.value = hours;
 	mintsDom.value = mints;
 	meridiemDom.value = meridiem;
+
 	
+}
+
+function appendOption (){
+	//hours
+	for(let i = 1 ; i<= 12 ; i++){
+			i = (i<10) ? '0'+i : i ;
+			let opt = document.createElement('option');
+			opt.value = i;
+			opt.textContent = i;
+			hoursDom.append(opt);	
+	}
+	// minutes
+	for(let i = 1 ; i<= 59 ; i++){
+			i = (i<10) ? '0'+i : i ;
+			let opt = document.createElement('option');
+			opt.value = i;
+			opt.textContent = i;
+			mintsDom.append(opt);	
+	}
+
+
 }
 
 function appendZero(n){
