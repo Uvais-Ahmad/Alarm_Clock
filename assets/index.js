@@ -30,12 +30,30 @@ function handleSubmit(){
 	handleSetAlarm(timeString);
 	setDefaultAlarm();
 
+	//Add EventListner on each alarm 
+	let allTrash = document.querySelectorAll('.trashBin');
+	console.log(allTrash);
+	allTrash.forEach(bin => {
+		bin.addEventListener('click' , (e) => {
+			console.log('Yes I am clicked  ')
+			e.target.parentElement.parentElement.remove();
+		})
+	})
+
+	// let allAlarm = document.querySelectorAll('.oneAlarm');
+	// console.log(allAlarm);
+	// allAlarm.forEach(alarm => {
+	// 	alarm.addEventListener('click' , (e) => {
+	// 		console.log(e.target)
+	// 	})
+	// })
+
 }
 
 function handleSetAlarm(time){
 	console.log('handleSetAlarm called')
 	alarmList.innerHTML += 
-					`<div class = " d-flex shadow mt-1">
+					`<div class = "d-flex shadow mt-1 oneAlarm">
 						<div class="left">
 							<div class="w-25 ">
 								<img class="w-50 mt-1" src="assets/images/bell.png">
@@ -48,7 +66,7 @@ function handleSetAlarm(time){
 						</div>
 
 						<div class="right w-50">
-							<img class="w-50 mt-1 ml-auto" src="assets/images/trashBin.png">
+							<img class="w-50 mt-1 ml-auto trashBin" src="assets/images/trashBin.png">
 						<div>
 					</div>`
 }

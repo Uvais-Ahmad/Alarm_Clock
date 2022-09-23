@@ -10,3 +10,7 @@
 .alarm :first-child{
 	
 }
+
+.naviga{
+	cursor: move-hand;
+}
