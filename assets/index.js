@@ -6,6 +6,10 @@ let  meridiemDom = document.getElementsByClassName('meridiem')[0];
 let setAlarm = document.getElementById('submit');
 let alarmList = document.getElementsByClassName('alarm')[0];
 
+// This append all Options of Hours and mints
+appendOption();
+setDefaultAlarm();
+
 setInterval(()=>{
 	let time = new Date();
 	const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -13,9 +17,6 @@ setInterval(()=>{
 	setDate.textContent = time.toLocaleDateString('en-US', options)
 	setTime.textContent = time.toLocaleTimeString();
 },1000);
-
-appendOption();
-setDefaultAlarm();
 
 
 setAlarm.addEventListener('click', handleSubmit );

@@ -28,5 +28,5 @@ btn.addEventListener('click',()=>{
 })
 
 about.addEventListener('click',()=>{
-	alert("Hi , Welcome   This   is   Alarm   Clock   created   By   **'UVAIS AHMAD'**   by   using  FrontEnd   Techniques ( HTML / CSS / Vanilla Js ) ");
+	alert("Hi , Welcome   This   is   Alarm   Clock   created   By   ::=>  UVAIS AHMAD  <=::   by   using  FrontEnd   Techniques ( HTML / CSS / Vanilla Js ) ");
 })
