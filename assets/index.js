@@ -17,6 +17,7 @@ setInterval(()=>{
 appendOption();
 setDefaultAlarm();
 
+
 setAlarm.addEventListener('click', handleSubmit );
 
 function handleSubmit(){
@@ -122,3 +123,6 @@ function getTimeString ( h , m , meri){
 	console.log("getTimeString called")
 	return `${h} : ${m} ${meri}`;
 }
+
+
+

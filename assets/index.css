@@ -2,6 +2,7 @@
 	margin: 0;
 	font-family: sans-serif;
 }
+
 .left{
 	display: flex;
 
@@ -25,4 +26,28 @@
 .mainIcon > img{
 	width: 100%;
 	height: 100%;
+}
+
+/* 	================= DARK MODE ============*/
+
+#darkBtn{
+	height: 40px;
+}
+#darkBtn > img{
+	height: 100%;
+	width: 100%;
+}
+
+.dark{
+	background-color: #15212b;
+	/* background-color: black; */
+	color: white;
+}
+.darkLight{
+	background-color: #283c4e;
+	color: white;
+}
+
+.navRight > p , .trashBin{
+	cursor: pointer;
 }
