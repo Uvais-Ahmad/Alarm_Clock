@@ -3,6 +3,10 @@
 	font-family: sans-serif;
 }
 
+#alarm-clock-container , #alarmlist{
+	min-width: 300px;
+}
+
 .left{
 	display: flex;
 
@@ -47,4 +51,12 @@
 
 .navRight > p , .trashBin{
 	cursor: pointer;
+}
+
+
+			/* 			Media Query at 'md'breakPoint		 */
+@media all and (max-width: 768px) {
+	#main{
+		align-items: center;
+	}
 }
