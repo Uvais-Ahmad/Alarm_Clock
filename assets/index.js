@@ -2,7 +2,7 @@ let setTime = document.getElementById('time');
 let setDate = document.getElementById('date');
 let hoursDom =	document.getElementById('hours');
 let mintsDom = document.getElementById('mints');
-let  meridiemDom = document.getElementsByClassName('meridiem')[0];
+let meridiemDom = document.getElementsByClassName('meridiem')[0];
 let setAlarm = document.getElementById('submit');
 let alarmList = document.getElementsByClassName('alarm')[0];
 
@@ -22,7 +22,6 @@ setInterval(()=>{
 setAlarm.addEventListener('click', handleSubmit );
 
 function handleSubmit(){
-	console.log('handleSubmit called')
 	let h , m , meri;
 	h = hoursDom.value;
 	m = mintsDom.value;
@@ -41,7 +40,6 @@ function handleDeleteAlarm(){
 	
 	allTrash.forEach(trash => {
 		trash.addEventListener('click' , (e) => {
-			console.log('Delete Alarm');
 			e.target.parentElement.parentElement.remove();
 			//parent of image is div and parent on div is Whole Alarm
 		})
@@ -49,7 +47,6 @@ function handleDeleteAlarm(){
 }
 
 function handleSetAlarm(time){
-	console.log('handleSetAlarm called')
 	alarmList.innerHTML += 
 					`<div class = "d-flex shadow mt-1 oneAlarm">
 						<div class="left">
@@ -72,7 +69,6 @@ function handleSetAlarm(time){
 
 				// For setting the alarm Bydefault
 function setDefaultAlarm(){
-	console.log('setDefaultAlarm called');
 	let time = new Date();
 	let hours = time.getHours();
 	let mints = time.getMinutes();
@@ -112,7 +108,6 @@ function appendOption (){
 }
 
 function appendZero(n){
-		console.log("appendZero called")
 
 	if(n<10){
 		return '0'+n;
@@ -127,3 +122,38 @@ function getTimeString ( h , m , meri){
 
 
 
+// 	=======================================================================================
+// 										Alarm Ring 
+
+		//This return the current time String
+function giveCurrentTimeString (){
+	let time = new Date();
+	let hours = time.getHours();
+	let mints = time.getMinutes();
+
+	let meridiem = hours >= 12 ? 'PM' : 'AM' ;
+	hours = hours > 12 ? hours - 12 : hours; 
+
+	hours = appendZero(hours);
+	mints = appendZero(mints);
+
+	let crntTimeString = getTimeString(hours , mints , meridiem);
+	return crntTimeString
+}
+
+	//Each second check any alarm time is equal to current time
+
+let interval = setInterval (()=>{
+	let crntTime = giveCurrentTimeString();
+	let alarmCollec = document.querySelectorAll('.alarmTime');
+	//We check all alarm oneby One which time is matched
+	for( a of alarmCollec){
+		console.log('IS EQUAL : ',a.textContent === crntTime);
+		if(a.textContent === crntTime){
+			//This is remove that alarm which is ringing
+			a.parentElement.parentElement.parentElement.remove();
+			alert('Your Alarm is ringing !!!!!!!! please Stop alarm ');
+		}
+	}
+
+},1000)
